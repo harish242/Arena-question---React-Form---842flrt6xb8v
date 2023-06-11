@@ -17,7 +17,11 @@ const App = () => {
   const [success, setSuccess] = useState(false);
 
   const handleChange = (event) => {
-    setFormDetails({ ...formDetails, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    setFormDetails((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -57,8 +61,18 @@ const App = () => {
 
     if (isValid) {
       setSuccess(true);
-      setFormDetails({ username: '', email: '', password: '', contactNo: '' });
-      setError({ username: '', email: '', password: '', contactNo: '' });
+      setFormDetails({
+        username: '',
+        email: '',
+        password: '',
+        contactNo: '',
+      });
+      setError({
+        username: '',
+        email: '',
+        password: '',
+        contactNo: '',
+      });
     }
   };
 
